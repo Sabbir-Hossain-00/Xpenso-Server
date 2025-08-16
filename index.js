@@ -11,7 +11,7 @@ const port = 3000;
 // middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://xpenso-00.web.app"],
     credentials: true,
   })
 );
@@ -55,8 +55,8 @@ async function run() {
       res
         .cookie("token", token, {
           httpOnly: true,
-          secure: false,
-          sameSite: "lax",
+          secure: true,
+          sameSite: "none",
         })
         .send({ success: true });
     });
